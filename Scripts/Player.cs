@@ -5,32 +5,34 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int speed = 5;
+    public float jumpForce = 2;
     private bool onGround = true;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
- 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Run();
+        Jump();
+    }
+
+    void Run()
+    {
         float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        rb.velocity = new Vector2(x * speed, rb.velocity.y);
+    }
 
-        transform.Translate(Vector2.right * x * Time.deltaTime * speed);
-
-        // Check if player is on ground
-        // set onGround
-
-        if (onGround)
+    void Jump()
+    {
+        if (onGround && Input.GetAxis("Jump") > 0)
         {
-            transform.Translate(Vector2.up * z * Time.deltaTime * speed);
-        }
-        else
-        {
-            // crouch?
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 }

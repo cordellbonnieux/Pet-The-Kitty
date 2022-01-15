@@ -1032,7 +1032,7 @@ CompositeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.001
   m_ColliderPaths:
   - m_Collider: {fileID: 192148152}
     m_ColliderPaths:
@@ -1098,7 +1098,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 192148148}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 627783861}
-  zoomDistance: -5
+  zoomDistance: -8
 --- !u!81 &399355826
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1240,6 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpForce: 8
 --- !u!212 &627783863
 SpriteRenderer:
   m_ObjectHideFlags: 0
