@@ -2,6 +2,7 @@ Pet The Kitty
 
 Unity/C#
 
-This is a 3d third person game (MVP), where the user controls a character which can traverse a 3D world.
-The object of the game is to pet an elusive kitty, which continously runs between randomly selected positions in the world.
+This game is a 2D parallaxing side scroller, in which levels are broken down into small puzzles. The goal at for each puzzle, is to pet the 
+kitty that appears opposite to the player. 
 
+This is intended to be a portfolio project, and a way to learn more about Unity.
