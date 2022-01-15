@@ -19,14 +19,14 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.right * x * Time.deltaTime * speed);
+        transform.Translate(Vector2.right * x * Time.deltaTime * speed);
 
         // Check if player is on ground
         // set onGround
 
         if (onGround)
         {
-            transform.Translate(Vector3.up * z * Time.deltaTime * speed);
+            transform.Translate(Vector2.up * z * Time.deltaTime * speed);
         }
         else
         {
