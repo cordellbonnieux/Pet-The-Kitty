@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    private bool onGround;
+    public int speed = 5;
+    private bool onGround = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+ 
     }
 
     // Update is called once per frame
@@ -19,7 +19,18 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.forward * z * Time.deltaTime * speed);
         transform.Translate(Vector3.right * x * Time.deltaTime * speed);
+
+        // Check if player is on ground
+        // set onGround
+
+        if (onGround)
+        {
+            transform.Translate(Vector3.up * z * Time.deltaTime * speed);
+        }
+        else
+        {
+            // crouch?
+        }
     }
 }
