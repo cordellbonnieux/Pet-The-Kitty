@@ -6,15 +6,17 @@ public class Player : MonoBehaviour
 {
     public Transform onGroundChecker;
     public LayerMask groundLayer;
-    public float checkGroundRadius;
     public int speed = 5;
     public float jumpForce = 2;
+    public float rememberJumpFor = 0.8f;
+    public float rememberGroundedFor = 0.1f;
+    public float checkGroundRadius;
     private bool onGround = false;
     private Rigidbody2D rb;
     private float fallMultiplier = 2.5f;
     private float lowJumpMultiplier = 2f;
-    private float rememberGroundedFor;
     private float lastTimeGrounded;
+    private float lastTimeJumped;
 
     void Start()
     {
@@ -54,9 +56,10 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (onGround && (Input.GetAxis("Jump") > 0 || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        if (Input.GetAxis("Jump") > 0 && (onGround || Time.time - lastTimeGrounded <= rememberGroundedFor) && Time.time - lastTimeJumped >= rememberJumpFor)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            lastTimeJumped = Time.time;
         }
     }
 
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier -1) * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0 && (Input.GetAxis("Jump") <= 0))
         {
